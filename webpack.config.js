@@ -19,6 +19,7 @@ module.exports = {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
+    assetModuleFilename: 'images/[name][ext]',
   },
   optimization: {
     runtimeChunk: 'single',

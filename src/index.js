@@ -1,11 +1,9 @@
 import './style.scss';
+import img from './img/logo.png';
 
-function component() {
-  // const element = document.createElement('div');
-
-  // element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-
-  // return element;
-}
-
-document.body.appendChild(component());
+// add image as a logo in the navbar
+const logo = document.createElement('img');
+logo.src = img;
+logo.alt = 'logo';
+logo.classList.add('logoimg');
+document.querySelector('.logo').appendChild(logo);
