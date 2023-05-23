@@ -1,12 +1,11 @@
 import './style.scss';
-// add bootstrap
 
 function component() {
-  const element = document.createElement('div');
+  // const element = document.createElement('div');
 
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+  // element.innerHTML = _.join(['Hello', 'webpack'], ' ');
 
-  return element;
+  // return element;
 }
 
 document.body.appendChild(component());

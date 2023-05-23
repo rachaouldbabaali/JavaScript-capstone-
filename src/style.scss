@@ -1,3 +1,27 @@
+$primary-color: rgb(15, 15, 15);
+$secondary-color: #cbb89a;
+$tertiary-color: #8d8171;
+$quaternary-color: #2a695e;
+$quinary-color: #143f46;
+$senary-color: #2b1c2f;
+$families: "Roboto", "Helvetica Neue", sans-serif;
+
 body {
-    background-color: bisque;
+  background-image: url("./img/background.jpg");
+  font-family: $families;
+}
+
+nav {
+  background-color: $secondary-color;
+  box-shadow: $senary-color 0 0 10px;
+  opacity: 0.8;
+  color: $quaternary-color;
+}
+
+footer {
+  background-color: $secondary-color;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  opacity: 0.8;
 }
