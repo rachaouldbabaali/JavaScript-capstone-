@@ -1,4 +1,4 @@
 import './style.scss';
-import getBooks from './modules/viewBooks.js';
+import display from './modules/view.js';
 
-getBooks();
+display();

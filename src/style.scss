@@ -65,23 +65,25 @@ nav {
   color: white;
   position: absolute;
   bottom: 8px;
-  right: 5px;
+  left: 5px;
 }
 
 .book-like {
-  font-size: 12px;
-  font-weight: 500;
-  padding: 4px;
-  border-radius: 2px;
-  background-color: black;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 6px;
+  border-radius: 4px;
+  background-color: gold;
   color: white;
-  position: absolute;
   bottom: 8px;
-  left: 5px;
+  min-width: 90px;
 }
 
 .book-info {
   padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .book-title {
