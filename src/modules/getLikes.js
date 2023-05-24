@@ -9,4 +9,13 @@ const getLikes = async () => {
   return res;
 };
 
-export default getLikes;
+const getLikesAfterPost = async () => {
+  const response = await fetch(CAPSTONE_API_URL);
+  if (!response.ok) {
+    throw new Error('Failed to fetch Likes data');
+  }
+  const res = await response.json();
+  return res;
+};
+
+export { getLikes, getLikesAfterPost };

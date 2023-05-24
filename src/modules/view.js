@@ -1,5 +1,5 @@
 import getBooks from './getBooks.js';
-import getLikes from './getLikes.js';
+import { getLikes, getLikesAfterPost } from './getLikes.js';
 import postLikes from './postLikes.js';
 
 const bookGrid = document.querySelector('.book-grid');
@@ -31,10 +31,16 @@ const display = async () => {
 
       const bookLike = document.createElement('p');
       bookLike.classList.add('book-like');
-      bookLike.addEventListener('click', () => {
-        if (postLikes(id)) bookLike.textContent = `❤ ${likes + 1} Likes`;
-      });
       bookLike.textContent = `❤ ${likes} Likes`;
+      bookLike.addEventListener('click', async () => {
+        if (postLikes(id)) {
+          const getPostedLikes = await getLikesAfterPost();
+          if (getPostedLikes) {
+            const updatedLikes = getPostedLikes[id].likes;
+            bookLike.textContent = `❤ ${updatedLikes} Likes`;
+          }
+        }
+      });
 
       const bookInfo = document.createElement('div');
       bookInfo.classList.add('book-info');
