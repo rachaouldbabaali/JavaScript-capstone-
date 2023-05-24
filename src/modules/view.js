@@ -1,19 +1,24 @@
 import getBooks from './getBooks.js';
+import getLikes from './getLikes.js';
 
 const bookGrid = document.querySelector('.book-grid');
 bookGrid.innerHTML = '';
 
-const displayBooks = async () => {
+const display = async () => {
   try {
     const books = await getBooks();
-    books.forEach((book) => {
+    const getTheLikes = await getLikes();
+    books.forEach((book, index) => {
+      const id = getTheLikes.findIndex((like) => +like.item_id === index);
+      const likes = id >= 0 ? getTheLikes[id].likes : 0;
+
       const thumbnail = document.createElement('img');
       thumbnail.classList.add('thumbnail');
       thumbnail.src = book.coverImageUrl;
 
       const bookTime = document.createElement('div');
       bookTime.classList.add('book-time');
-      bookTime.textContent = book.publishYear;
+      bookTime.textContent = `Published in: ${book.publishYear}`;
 
       const thumbnailRow = document.createElement('div');
       thumbnailRow.classList.add('thumbnail-row');
@@ -23,9 +28,13 @@ const displayBooks = async () => {
       bookTitle.classList.add('book-title');
       bookTitle.textContent = book.title;
 
+      const bookLike = document.createElement('p');
+      bookLike.classList.add('book-like');
+      bookLike.textContent = `❤ ${likes} Likes`;
+
       const bookInfo = document.createElement('div');
       bookInfo.classList.add('book-info');
-      bookInfo.append(bookTitle);
+      bookInfo.append(bookTitle, bookLike);
 
       const bookInfoGrid = document.createElement('div');
       bookInfoGrid.classList.add('book-info-grid');
@@ -42,4 +51,4 @@ const displayBooks = async () => {
   }
 };
 
-export default displayBooks;
+export default display;
