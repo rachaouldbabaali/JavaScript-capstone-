@@ -1,4 +1,5 @@
-const CAPSTONE_API_URL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/Rn82Q3srQlIfvYWDJQZx/likes';
+import CAPSTONE_API_URL from './url.js';
+
 const getLikes = async () => {
   const response = await fetch(CAPSTONE_API_URL);
   if (!response.ok) {

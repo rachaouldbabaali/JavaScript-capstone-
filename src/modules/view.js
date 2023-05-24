@@ -1,5 +1,6 @@
 import getBooks from './getBooks.js';
 import getLikes from './getLikes.js';
+import postLikes from './postLikes.js';
 
 const bookGrid = document.querySelector('.book-grid');
 bookGrid.innerHTML = '';
@@ -30,6 +31,9 @@ const display = async () => {
 
       const bookLike = document.createElement('p');
       bookLike.classList.add('book-like');
+      bookLike.addEventListener('click', () => {
+        if (postLikes(id)) bookLike.textContent = `❤ ${likes + 1} Likes`;
+      });
       bookLike.textContent = `❤ ${likes} Likes`;
 
       const bookInfo = document.createElement('div');
