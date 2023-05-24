@@ -37,7 +37,7 @@ export default class Popup {
         data.forEach((element) => {
           const commentElement = document.createElement('li');
           commentElement.classList.add('popup__comment');
-          commentElement.textContent = element.comment;
+          commentElement.innerHTML = `${element.creation_date} <span>${element.username}</span>: ${element.comment}`;
           this.popup.querySelector('.popup__comments').appendChild(commentElement);
         });
       });
