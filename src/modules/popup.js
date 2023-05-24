@@ -1,5 +1,4 @@
-// create a popup window for comments and add it to the DOM tree
-import getBooks from './getBooks.js';
+import getComments from './getComments.js';
 
 export default class Popup {
   constructor() {
@@ -15,7 +14,8 @@ export default class Popup {
             <img class="popup__cover-image" src="" alt="">
             <p class="popup__publish-year"></p>
             <p class="popup__description"></p>
-            <h4 class="popup__comments-title">Comments</h4>
+            <h4 class="popup__comments-title">Comments </h4>
+            <div class="comment-count"> </div>
             <ul class="popup__comments"></ul>
             <div class="popup__new-comment">
                 <input type="text" class="popup__new-comment-username" placeholder="Your name">
@@ -37,32 +37,26 @@ export default class Popup {
   }
 
   // show the popup for a specific book
-    showPopup(book) {
+  showPopup(book) {
     this.titleElement.textContent = book.title;
     this.coverImageElement.src = book.coverImageUrl;
     this.coverImageElement.alt = book.title;
     this.popup.querySelector('.popup__publish-year').textContent = book.publishYear;
     this.popup.querySelector('.popup__description').textContent = book.description;
-    this.showCommentsPopup();
-    }
-
-  // show the popup
-  showCommentsPopup() {
-    // get comments from the server
-    const itemCommentsUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/fbs2iyi2bEqolrs1GvfW/comments?item_id=item1';
-    fetch(itemCommentsUrl)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        data.forEach((element) => {
-          const commentElement = document.createElement('li');
-          commentElement.classList.add('popup__comment');
-          commentElement.innerHTML = `${element.creation_date} <span>${element.username}</span>: ${element.comment}`;
-          this.popup.querySelector('.popup__comments').appendChild(commentElement);
-        });
-      });
     document.body.appendChild(this.popup);
   }
+
+  // dsplay the comments for a specific book
+    displayComments(comments) {
+    this.commentsList.innerHTML = '';
+    comments.forEach((comment) => {
+        const commentElement = document.createElement('li');
+        commentElement.classList.add('popup__comment');
+        commentElement.innerHTML = `<span>${comment.username}</span>: ${comment.comment}`;
+        this.commentsList.appendChild(commentElement);
+    });
+    this.popup.querySelector('.comment-count').textContent = `${comments.length} comments`;
+    }
 
   // close the popup
   closeCommentsPopup() {
@@ -70,7 +64,7 @@ export default class Popup {
   }
 
   // add a comment to the popup with username that swhod be entered by the user
-    addComment() {
+  addComment() {
     const comment = document.querySelector('.popup__new-comment-textarea').value;
     const username = document.querySelector('.popup__new-comment-username').value;
     const commentElement = document.createElement('li');
@@ -79,7 +73,5 @@ export default class Popup {
     this.popup.querySelector('.popup__comments').appendChild(commentElement);
     document.querySelector('.popup__new-comment-textarea').value = '';
     document.querySelector('.popup__new-comment-username').value = '';
-
-    }
-
+  }
 }

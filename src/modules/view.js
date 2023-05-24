@@ -1,5 +1,7 @@
 import getBooks from './getBooks.js';
+import getLikes from './getLikes.js';
 import Popup from './popup.js';
+import getComments from './getComments.js';
 
 const bookGrid = document.querySelector('.book-grid');
 bookGrid.innerHTML = '';
@@ -7,7 +9,11 @@ bookGrid.innerHTML = '';
 const displayBooks = async () => {
   try {
     const books = await getBooks();
-    books.forEach((book) => {
+    const getTheLikes = await getLikes();
+    books.forEach((book, index) => {
+      const id = getTheLikes.findIndex((like) => +like.item_id === index);
+      const likes = id >= 0 ? getTheLikes[id].likes : 0;
+
       const thumbnail = document.createElement('img');
       thumbnail.classList.add('thumbnail');
       thumbnail.src = book.coverImageUrl;
@@ -24,9 +30,13 @@ const displayBooks = async () => {
       bookTitle.classList.add('book-title');
       bookTitle.textContent = book.title;
 
+      const bookLike = document.createElement('p');
+      bookLike.classList.add('book-like');
+      bookLike.textContent = `❤ ${likes} Likes`;
+
       const bookInfo = document.createElement('div');
       bookInfo.classList.add('book-info');
-      bookInfo.append(bookTitle);
+      bookInfo.append(bookTitle, bookLike);
 
       const bookInfoGrid = document.createElement('div');
       bookInfoGrid.classList.add('book-info-grid');
@@ -43,6 +53,11 @@ const displayBooks = async () => {
         // show comment popup for this book
         const popup = new Popup();
         popup.showPopup(book);
+        // get comments for this book and display them in the popup
+        getComments(index).then((comments) => {
+          popup.displayComments(comments);
+        });
+
       });
       bookPreview.appendChild(commentButton);
 
