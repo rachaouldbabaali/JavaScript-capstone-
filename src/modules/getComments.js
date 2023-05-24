@@ -9,7 +9,7 @@
 //     }
 // export default getComments;
 
-const CAPSTONE_API_URL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/Rn82Q3srQlIfvYWDJQZx/comments';
+const CAPSTONE_API_URL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/CJBclXhG3xsVEAuyngVA/comments';
 
 const getComments = async (itemId) => {
   itemId += 1;

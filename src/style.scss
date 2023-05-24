@@ -117,8 +117,10 @@ nav {
 
 .popup {
   position: fixed;
-  top: 0;
-  left: 0;
+  padding-top: 30px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 100;
   width: 100%;
   height: 100%;
@@ -126,72 +128,102 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
 
-  &__content {
-    background-color: white;
+  .popup__content {
+    background-color: $secondary-color;
     padding: 20px;
-    max-width: 500px;
-    width: 70%;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
+    margin-top: 30px;
   }
 
-  &__header {
+  .popup__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
 
-    &__title {
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin: 0;
-    }
+    
 
-    &__close {
-      font-size: 2rem;
+    .popup__close {
+      font-size: 3.5rem;
       background-color: transparent;
       border: none;
       cursor: pointer;
-      color: gray;
+      color: $quinary-color;
       transition: all 0.2s;
 
       &:hover {
         color: black;
+        background-color: #143f46;
       }
     }
   }
 
-  &__body {
+  .popup__body {
     display: flex;
     flex-direction: column;
-    align-items: center;
-
-    &__comments {
+    align-items: self-start;
+  }
+    
+.popup__publish-year {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: $senary-color;
+  margin-bottom: 10px;
+  align-self: flex-start;
+}
+.popup__comments-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: $senary-color;
+  margin-bottom: 10px;
+  align-self: start;
+  display: flex;
+  flex-direction: row;
+}
+    .popup__comments {
       list-style: none;
       margin: 0;
       padding: 0;
       max-height: 200px;
       overflow-y: auto;
       width: 100%;
-
-      &__comment {
-        margin-bottom: 10px;
-        font-size: 0.9rem;
-
-        & span {
-          font-weight: bold;
-        }
-      }
+      align-self: flex-start;
     }
+    .popup__comment {
+        margin-bottom: 10px;
+        font-size: 1.2rem;
+        border-radius: 5px;
+        border: 1px solid $quinary-color;
+        box-sizing: border-box;
+        color: $quinary-color;
+        padding-left: 10px;
+        background-color: $secondary-color;
+    }
+        .popup__comment:hover {
+          outline: none;
+          border-color: $quinary-color;
+          box-shadow: 0px 0px 3px rgba(0, 123, 255, 0.3);
+        }
+    
+        span {
+          font-weight: bold;
+          color: $quaternary-color;
+          font-size: 1.5rem;
+        }
+      
 
-    &__new-comment {
+    .popup__new-comment {
       display: flex;
       flex-direction: column;
       align-items: center;
       margin-top: 20px;
-
-      &__new-comment-username {
+    }
+      .popup__new-comment-username {
         width: 100%;
         height: 40px;
         padding: 10px;
@@ -200,6 +232,7 @@ nav {
         margin-bottom: 10px;
         font-size: 0.9rem;
         box-sizing: border-box;
+        align-self: flex-start;
         &:focus {
           outline: none;
           border-color: #007bff;
@@ -207,7 +240,7 @@ nav {
         }
       }
 
-      &__new-comment-textarea {
+      .popup__new-comment-textarea {
         width: 100%;
         height: 60px;
         padding: 10px;
@@ -217,15 +250,16 @@ nav {
         margin-bottom: 10px;
         font-size: 0.9rem;
         box-sizing: border-box;
+        align-self: flex-start;
         &:focus {
           outline: none;
-          border-color: #007bff;
+          border-color: $quinary-color;
           box-shadow: 0px 0px 3px rgba(0, 123, 255, 0.3);
         }
       }
 
-      &__new-comment-button {
-        background-color: #007bff;
+      .popup__new-comment-button {
+        background-color: $senary-color;
         color: white;
         border: none;
         border-radius: 5px;
@@ -234,16 +268,19 @@ nav {
         transition: all 0.2s;
 
         &:hover {
-          background-color: #0062cc;
+          background-color: $quinary-color;
+          color: $secondary-color;
         }
       }
-    }
-  }
+.popup__title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 20px;
+  color: $quaternary-color;
 }
-
-.popup_cover-image {
+.popup__cover-image {
   width: 100%;
-  height: 200px;
+  height: 400px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

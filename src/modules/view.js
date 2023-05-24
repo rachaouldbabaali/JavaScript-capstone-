@@ -57,7 +57,6 @@ const displayBooks = async () => {
         getComments(index).then((comments) => {
           popup.displayComments(comments);
         });
-
       });
       bookPreview.appendChild(commentButton);
 

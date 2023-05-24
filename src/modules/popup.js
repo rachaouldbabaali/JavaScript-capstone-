@@ -8,19 +8,20 @@ export default class Popup {
         <div class="popup__content">
             <div class="popup__header">
             <h3 class="popup__title"></h3>
-            <button class="popup__close">&times;</button>
+            <button type="button" class="close popup__close " aria-label="Close">
+                &times;</button>
             </div>
             <div class="popup__body">
             <img class="popup__cover-image" src="" alt="">
-            <p class="popup__publish-year"></p>
+            <p class="popup__publish-year"> This book was published on </p>
             <p class="popup__description"></p>
-            <h4 class="popup__comments-title">Comments </h4>
-            <div class="comment-count"> </div>
+            <h4 class="popup__comments-title">Comments <div class="comment-count"> </div></h4>
+            
             <ul class="popup__comments"></ul>
             <div class="popup__new-comment">
-                <input type="text" class="popup__new-comment-username" placeholder="Your name">
-                <textarea class="popup__new-comment-textarea" placeholder="Add a comment..."></textarea>
-                <button class="popup__new-comment-button">Comment</button>
+            <input type="text" class="popup__new-comment-username" required placeholder="Your name">
+            <textarea class="popup__new-comment-textarea" required placeholder="Add a comment..."></textarea>
+            <button class="popup__new-comment-button btn" type="submit">Comment</button>
             </div>
             </div>
         </div>
@@ -41,7 +42,7 @@ export default class Popup {
     this.titleElement.textContent = book.title;
     this.coverImageElement.src = book.coverImageUrl;
     this.coverImageElement.alt = book.title;
-    this.popup.querySelector('.popup__publish-year').textContent = book.publishYear;
+    this.popup.querySelector('.popup__publish-year').textContent = `This book was published on ${book.publishYear}`;
     this.popup.querySelector('.popup__description').textContent = book.description;
     document.body.appendChild(this.popup);
   }
@@ -55,7 +56,7 @@ export default class Popup {
         commentElement.innerHTML = `<span>${comment.username}</span>: ${comment.comment}`;
         this.commentsList.appendChild(commentElement);
     });
-    this.popup.querySelector('.comment-count').textContent = `${comments.length} comments`;
+    this.popup.querySelector('.comment-count').textContent = `...(${comments.length})`;
     }
 
   // close the popup
@@ -67,6 +68,11 @@ export default class Popup {
   addComment() {
     const comment = document.querySelector('.popup__new-comment-textarea').value;
     const username = document.querySelector('.popup__new-comment-username').value;
+    // check if the user entered a comment and a username
+    if (!comment || !username) {
+        // show a popup with an error message
+        return;
+    }
     const commentElement = document.createElement('li');
     commentElement.classList.add('popup__comment');
     commentElement.innerHTML = `<span>${username}</span>: ${comment}`;
