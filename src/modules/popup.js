@@ -68,7 +68,6 @@ export default class Popup {
     const username = document.querySelector('.popup__new-comment-username').value;
     // check if the user entered a comment and a username
     if (!comment || !username) {
-      // show a popup with an error message
       return;
     }
     const commentElement = document.createElement('li');
