@@ -1,5 +1,3 @@
-import getComments from './getComments.js';
-
 export default class Popup {
   constructor() {
     this.popup = document.createElement('div');
@@ -48,16 +46,16 @@ export default class Popup {
   }
 
   // dsplay the comments for a specific book
-    displayComments(comments) {
+  displayComments(comments) {
     this.commentsList.innerHTML = '';
     comments.forEach((comment) => {
-        const commentElement = document.createElement('li');
-        commentElement.classList.add('popup__comment');
-        commentElement.innerHTML = `<span>${comment.username}</span>: ${comment.comment}`;
-        this.commentsList.appendChild(commentElement);
+      const commentElement = document.createElement('li');
+      commentElement.classList.add('popup__comment');
+      commentElement.innerHTML = `<span>${comment.username}</span>: ${comment.comment}`;
+      this.commentsList.appendChild(commentElement);
     });
     this.popup.querySelector('.comment-count').textContent = `...(${comments.length})`;
-    }
+  }
 
   // close the popup
   closeCommentsPopup() {
@@ -70,8 +68,8 @@ export default class Popup {
     const username = document.querySelector('.popup__new-comment-username').value;
     // check if the user entered a comment and a username
     if (!comment || !username) {
-        // show a popup with an error message
-        return;
+      // show a popup with an error message
+      return;
     }
     const commentElement = document.createElement('li');
     commentElement.classList.add('popup__comment');
