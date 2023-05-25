@@ -4,7 +4,7 @@ const getComments = async (itemId) => {
   itemId += 1;
   const response = await fetch(`${CAPSTONE_API_URL}?item_id=item${itemId}`);
   if (!response.ok) {
-    throw new Error('Failed to fetch comments data');
+    throw new Error('No comment found');
   }
   const comments = await response.json();
   return comments;

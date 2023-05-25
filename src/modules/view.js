@@ -62,8 +62,7 @@ const displayBooks = async () => {
         popupForm.addEventListener('submit', (e) => {
           e.preventDefault();
           popup.addComment(index);
-        }
-        );
+        });
       });
       bookPreview.appendChild(commentButton);
 
