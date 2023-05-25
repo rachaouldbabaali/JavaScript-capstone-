@@ -130,8 +130,7 @@ nav {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 100;
-  width: 100%;
-  height: 800px;
+  height: 110vh;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
@@ -146,13 +145,14 @@ nav {
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   margin-top: 30px;
+  margin-bottom: 40px;
 }
 
 .popup__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 
   .popup__close {
     font-size: 3.5rem;
@@ -179,15 +179,15 @@ nav {
   font-size: 1.5rem;
   font-weight: bold;
   color: $senary-color;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   align-self: flex-start;
 }
 
 .popup__comments-title {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: bold;
   color: $senary-color;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   align-self: start;
   display: flex;
   flex-direction: row;
@@ -204,8 +204,8 @@ nav {
 }
 
 .popup__comment {
-  margin-bottom: 10px;
-  font-size: 1.2rem;
+  margin-bottom: 5px;
+  font-size: 1rem;
   border-radius: 5px;
   border: 1px solid $quinary-color;
   box-sizing: border-box;
@@ -230,7 +230,7 @@ span {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 5px;
 }
 
 .popup__new-comment-username {
@@ -239,7 +239,7 @@ span {
   padding: 10px;
   border-radius: 5px;
   border: 1px solid gray;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   font-size: 0.9rem;
   box-sizing: border-box;
   align-self: flex-start;
@@ -258,7 +258,7 @@ span {
   border-radius: 5px;
   border: 1px solid gray;
   resize: none;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   font-size: 0.9rem;
   box-sizing: border-box;
   align-self: flex-start;
@@ -286,20 +286,21 @@ span {
 }
 
 .popup__title {
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   font-weight: bold;
-  margin: 20px;
+  margin: 10px;
   color: $quaternary-color;
+  max-width: 400px;
 }
 
 .popup__cover-image {
-  width: 400px;
-  height: 400px;
+  width: 300px;
+  height: 300px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   align-self: center;
 }
 
