@@ -1,4 +1,12 @@
 import './style.scss';
-import display from './modules/view.js';
+import img from './img/logo.png';
+import getBooks from './modules/view.js';
 
-display();
+getBooks();
+
+// add the logo to the navbar
+const logo = document.createElement('img');
+logo.src = img;
+logo.alt = 'logo';
+logo.classList.add('logoimg');
+document.querySelector('.logo').appendChild(logo);
