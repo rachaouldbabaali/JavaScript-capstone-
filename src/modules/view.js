@@ -1,6 +1,7 @@
 import getBooks from './getBooks.js';
 import { getLikes, getLikesAfterPost } from './getLikes.js';
 import postLikes from './postLikes.js';
+import bookCount from './bookCount.js';
 
 const bookGrid = document.querySelector('.book-grid');
 bookGrid.innerHTML = '';
@@ -8,6 +9,7 @@ bookGrid.innerHTML = '';
 const display = async () => {
   try {
     const books = await getBooks();
+    bookCount(books.length);
     const getTheLikes = await getLikes();
     books.forEach((book, index) => {
       const id = getTheLikes.findIndex((like) => +like.item_id === index);
