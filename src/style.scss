@@ -325,3 +325,18 @@ footer {
   background-color: gold;
   border-radius: 30px;
 }
+
+.comment-button {
+  background-color: $senary-color;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: $quinary-color;
+    color: $secondary-color;
+  }
+}

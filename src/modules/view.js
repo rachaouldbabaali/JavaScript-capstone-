@@ -63,11 +63,17 @@ const display = async () => {
       commentButton.textContent = 'Add Comment';
       commentButton.addEventListener('click', () => {
         // show comment popup for this book
-        const popup = new Popup();
+        const popup = new Popup(index);
         popup.showPopup(book);
         // get comments for this book and display them in the popup
         getComments(index).then((comments) => {
           popup.displayComments(comments);
+        });
+        // add event listener to the popup's form
+        const popupForm = document.querySelector('.popup__new-comment-button');
+        popupForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          popup.addComment(index);
         });
       });
       bookPreview.appendChild(commentButton);

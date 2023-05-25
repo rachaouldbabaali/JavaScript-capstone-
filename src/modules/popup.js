@@ -1,5 +1,5 @@
 export default class Popup {
-  constructor() {
+  constructor(index) {
     this.popup = document.createElement('div');
     this.popup.classList.add('popup');
     this.popup.innerHTML = `
@@ -24,6 +24,8 @@ export default class Popup {
             </div>
         </div>
         `;
+    // get book index from the popup
+    this.index = index;
     this.titleElement = this.popup.querySelector('.popup__title');
     this.coverImageElement = this.popup.querySelector('.popup__cover-image');
     this.commentsList = this.popup.querySelector('.popup__comments');
@@ -31,7 +33,7 @@ export default class Popup {
       this.closeCommentsPopup();
     });
     this.popup.querySelector('.popup__new-comment-button').addEventListener('click', () => {
-      this.addComment();
+      this.addComment(this.index);
     });
   }
 
@@ -63,7 +65,7 @@ export default class Popup {
   }
 
   // add a comment to the popup with username that swhod be entered by the user
-  addComment() {
+  addComment(index) {
     const comment = document.querySelector('.popup__new-comment-textarea').value;
     const username = document.querySelector('.popup__new-comment-username').value;
     // check if the user entered a comment and a username
@@ -76,5 +78,30 @@ export default class Popup {
     this.popup.querySelector('.popup__comments').appendChild(commentElement);
     document.querySelector('.popup__new-comment-textarea').value = '';
     document.querySelector('.popup__new-comment-username').value = '';
+
+    // post the comment to the API
+    const commentData = {
+      item_id: `item${index + 1}`,
+      username,
+      comment,
+    };
+    const CAPSTONE_API_URL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/CJBclXhG3xsVEAuyngVA/comments';
+    fetch(CAPSTONE_API_URL, {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(commentData),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+      });
+
+    // update the comment count
+    const commentCount = this.popup.querySelector('.comment-count');
+    const count = parseInt(commentCount.textContent.match(/\d+/)[0], 10);
+    commentCount.textContent = `...(${count + 1})`;
   }
 }
