@@ -2,6 +2,8 @@ import getBooks from './getBooks.js';
 import { getLikes, getLikesAfterPost } from './getLikes.js';
 import postLikes from './postLikes.js';
 import bookCount from './bookCount.js';
+import Popup from './popup.js';
+import getComments from './getComments.js';
 
 const bookGrid = document.querySelector('.book-grid');
 bookGrid.innerHTML = '';
@@ -55,6 +57,20 @@ const display = async () => {
       const bookPreview = document.createElement('div');
       bookPreview.classList.add('book-preview');
       bookPreview.append(thumbnailRow, bookInfoGrid);
+
+      const commentButton = document.createElement('button');
+      commentButton.classList.add('comment-button');
+      commentButton.textContent = 'Add Comment';
+      commentButton.addEventListener('click', () => {
+        // show comment popup for this book
+        const popup = new Popup();
+        popup.showPopup(book);
+        // get comments for this book and display them in the popup
+        getComments(index).then((comments) => {
+          popup.displayComments(comments);
+        });
+      });
+      bookPreview.appendChild(commentButton);
 
       bookGrid.appendChild(bookPreview);
     });
