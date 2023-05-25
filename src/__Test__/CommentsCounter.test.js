@@ -1,9 +1,10 @@
-const getBooks = require('../modules/getBooks.js').default;
+// test comments counter
+const getComments = require('../modules/getComments.js').default;
 
-describe('items counter tests using Jest', () => {
-  test('test getBooks function', async () => {
-    const response = await getBooks();
+describe('comments counter tests using Jest', () => {
+  test('test getComments function', async () => {
+    const response = await getComments(1);
 
-    expect(response.length).toEqual(18);
+    expect(response.length).toEqual(2);
   });
 });
