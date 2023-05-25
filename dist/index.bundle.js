@@ -670,7 +670,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ Popup)
 /* harmony export */ });
 class Popup {
-  constructor(index) {
+    constructor(index) {
     this.popup = document.createElement('div');
     this.popup.classList.add('popup');
     this.popup.innerHTML = `
@@ -704,7 +704,7 @@ class Popup {
       this.closeCommentsPopup();
     });
     this.popup.querySelector('.popup__new-comment-button').addEventListener('click', () => {
-      this.addComment(this.index);
+    this.addComment(this.index);
     });
   }
 
@@ -736,7 +736,7 @@ class Popup {
   }
 
   // add a comment to the popup with username that swhod be entered by the user
-  addComment(index) {
+    addComment(index) {
     const comment = document.querySelector('.popup__new-comment-textarea').value;
     const username = document.querySelector('.popup__new-comment-username').value;
     // check if the user entered a comment and a username
@@ -776,8 +776,6 @@ class Popup {
     commentCount.textContent = `...(${count + 1})`;
   }
 }
-
-
 /***/ }),
 
 /***/ "./src/modules/postLikes.js":
