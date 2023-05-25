@@ -172,7 +172,7 @@ We would like to thank Microverse for this amazing collaboration project.
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT](https://github.com/rachaouldbabaali/-javascript-capstone-/blob/main/LICENSE) licensed.
+This project is [MIT](https://github.com/rachaouldbabaali/JavaScript-capstone-/blob/Staged/LICENSE.md) licensed.
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
