@@ -1,11 +1,12 @@
 import './style.scss';
+import img from './img/logo.png';
+import getBooks from './modules/view.js';
 
-function component() {
-  // const element = document.createElement('div');
+getBooks();
 
-  // element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-
-  // return element;
-}
-
-document.body.appendChild(component());
+// add the logo to the navbar
+const logo = document.createElement('img');
+logo.src = img;
+logo.alt = 'logo';
+logo.classList.add('logoimg');
+document.querySelector('.logo').appendChild(logo);
