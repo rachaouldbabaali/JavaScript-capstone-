@@ -24,7 +24,7 @@ export default class Popup {
             </div>
         </div>
         `;
-        // get book index from the popup
+    // get book index from the popup
     this.index = index;
     this.titleElement = this.popup.querySelector('.popup__title');
     this.coverImageElement = this.popup.querySelector('.popup__cover-image');
@@ -65,7 +65,7 @@ export default class Popup {
   }
 
   // add a comment to the popup with username that swhod be entered by the user
-   addComment(index) {
+  addComment(index) {
     const comment = document.querySelector('.popup__new-comment-textarea').value;
     const username = document.querySelector('.popup__new-comment-username').value;
     // check if the user entered a comment and a username
@@ -81,19 +81,19 @@ export default class Popup {
 
     // post the comment to the API
     const commentData = {
-        item_id: `item${index +1}`,
-        username :username,
-        comment : comment,
+      item_id: `item${index + 1}`,
+      username,
+      comment,
     };
     const CAPSTONE_API_URL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/CJBclXhG3xsVEAuyngVA/comments';
     fetch(CAPSTONE_API_URL, {
-        method: 'POST',
-        headers: {
-            'Content-type': 'application/json',
-        },
-        body: JSON.stringify(commentData),
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(commentData),
     })
-    .then((response) => {
+      .then((response) => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -103,8 +103,5 @@ export default class Popup {
     const commentCount = this.popup.querySelector('.comment-count');
     const count = parseInt(commentCount.textContent.match(/\d+/)[0], 10);
     commentCount.textContent = `...(${count + 1})`;
-
-    }
+  }
 }
-
-
