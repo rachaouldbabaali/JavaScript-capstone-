@@ -1,4 +1,5 @@
-const CAPSTONE_API_URL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/Rn82Q3srQlIfvYWDJQZx/likes';
+import CAPSTONE_API_URL from './url.js';
+
 const getLikes = async () => {
   const response = await fetch(CAPSTONE_API_URL);
   if (!response.ok) {
@@ -8,4 +9,13 @@ const getLikes = async () => {
   return res;
 };
 
-export default getLikes;
+const getLikesAfterPost = async () => {
+  const response = await fetch(CAPSTONE_API_URL);
+  if (!response.ok) {
+    throw new Error('Failed to fetch Likes data');
+  }
+  const res = await response.json();
+  return res;
+};
+
+export { getLikes, getLikesAfterPost };

@@ -4,11 +4,11 @@ $tertiary-color: #8d8171;
 $quaternary-color: #2a695e;
 $quinary-color: #143f46;
 $senary-color: #2b1c2f;
-$families: "Roboto", "Helvetica Neue", sans-serif;
+$families: 'Roboto', 'Helvetica Neue', sans-serif;
 $thumbnail-width: 100%;
 
 body {
-  background-image: url("./img/background.jpg");
+  background-image: url('./img/background.jpg');
   font-family: $families;
 }
 
@@ -77,10 +77,18 @@ nav {
   color: white;
   bottom: 8px;
   min-width: 90px;
+  cursor: pointer;
+}
+
+#book-count {
+  font-weight: bolder;
 }
 
 .book-info {
   padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .book-title {
@@ -297,6 +305,7 @@ span {
 
 footer {
   background-color: $secondary-color;
+  position: relative;
   bottom: 0;
   width: 100%;
   opacity: 0.8;

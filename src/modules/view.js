@@ -1,14 +1,17 @@
 import getBooks from './getBooks.js';
-import getLikes from './getLikes.js';
+import { getLikes, getLikesAfterPost } from './getLikes.js';
+import postLikes from './postLikes.js';
+import bookCount from './bookCount.js';
 import Popup from './popup.js';
 import getComments from './getComments.js';
 
 const bookGrid = document.querySelector('.book-grid');
 bookGrid.innerHTML = '';
 
-const displayBooks = async () => {
+const display = async () => {
   try {
     const books = await getBooks();
+    bookCount(books.length);
     const getTheLikes = await getLikes();
     books.forEach((book, index) => {
       const id = getTheLikes.findIndex((like) => +like.item_id === index);
@@ -20,7 +23,7 @@ const displayBooks = async () => {
 
       const bookTime = document.createElement('div');
       bookTime.classList.add('book-time');
-      bookTime.textContent = book.publishYear;
+      bookTime.textContent = `Published in: ${book.publishYear}`;
 
       const thumbnailRow = document.createElement('div');
       thumbnailRow.classList.add('thumbnail-row');
@@ -33,6 +36,15 @@ const displayBooks = async () => {
       const bookLike = document.createElement('p');
       bookLike.classList.add('book-like');
       bookLike.textContent = `❤ ${likes} Likes`;
+      bookLike.addEventListener('click', async () => {
+        if (postLikes(id)) {
+          const getPostedLikes = await getLikesAfterPost();
+          if (getPostedLikes) {
+            const updatedLikes = getPostedLikes[id].likes;
+            bookLike.textContent = `❤ ${updatedLikes} Likes`;
+          }
+        }
+      });
 
       const bookInfo = document.createElement('div');
       bookInfo.classList.add('book-info');
@@ -62,7 +74,8 @@ const displayBooks = async () => {
         popupForm.addEventListener('submit', (e) => {
           e.preventDefault();
           popup.addComment(index);
-        });
+        }
+        );
       });
       bookPreview.appendChild(commentButton);
 
@@ -73,4 +86,4 @@ const displayBooks = async () => {
   }
 };
 
-export default displayBooks;
+export default display;
