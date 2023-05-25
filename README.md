@@ -103,6 +103,14 @@ To use this project on the `index.html` file with your prefered browser
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
+### Run tests
+
+```test
+npx eslint .
+npx hint .
+npm run test
+```
+
 ## 👥 Author <a name="authors"></a>
 
 
@@ -154,7 +162,11 @@ If you like this project please give a star ⭐️ to this project
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
 
-I would like to thank Microverse team, coding partners for the amazing collobrating project
+We would like to thank Microverse for this amazing collaboration project.
+
+**the used APIs**
+[Book API](https://openlibrary.org).
+[Involvement API](https://us-central1-involvement-api.cloudfunctions.net/capstoneApi).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
